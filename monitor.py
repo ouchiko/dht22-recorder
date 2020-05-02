@@ -4,6 +4,7 @@ import Adafruit_DHT
 import requests
 import datetime
 import urllib
+import time
 
 print("Launching temperature monitoring....")
 
@@ -13,12 +14,16 @@ api_endpoint = "http://192.168.0.60:8085/api/v1/set"
 dht11_sensor = Adafruit_DHT.DHT22
 # GIPO PIN number
 data_pin = 4
+# debugger?
+debug = (sys.argv[1] == "debug")
 
 # Forever!
 while True:
     try:
         # Read in the humidity and temperature.
         humidity, temperature = Adafruit_DHT.read_retry(dht11_sensor, data_pin)
+        if (debug):
+            print("temp:",temperature,"humd:",humidity)
         try:
             # Get the current time 
             now = datetime.datetime.now()
@@ -34,4 +39,5 @@ while True:
             print("Error when connecting to endpoint")
     except:
         print("There was an error when getting the data")
+    time.sleep(1);
     
