@@ -35,5 +35,3 @@ while True:
     except:
         print("There was an error when getting the data")
     
-       
-                                                                                                                                             20,12         All
