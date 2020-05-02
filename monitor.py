@@ -15,7 +15,7 @@ dht11_sensor = Adafruit_DHT.DHT22
 # GIPO PIN number
 data_pin = 4
 # debugger?
-debug = (len(sys.argv)>0 and sys.argv[1] == "debug")
+debug = (len(sys.argv)>1 and sys.argv[1] == "debug")
 
 # Forever!
 while True:
