@@ -36,8 +36,10 @@ while True:
             # Make a request to the endpoint.
             res = requests.get('', params=params);  
         except:
-            print("Error when connecting to endpoint")
+            if (debug):
+                print("Error when connecting to endpoint")
     except:
-        print("There was an error when getting the data")
+        if (debug):
+            print("There was an error when getting the data")
     time.sleep(1);
     
