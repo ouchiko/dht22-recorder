@@ -17,7 +17,7 @@ data_pin = 4
 # debugger?
 debug = (len(sys.argv)>1 and sys.argv[1] == "debug")
 
-f = open("/var/log/temp.log","w+")
+#f = open("/tmp/temp.log","w+")
 
 # Forever!
 while True:
@@ -27,7 +27,7 @@ while True:
         humidity, temperature = Adafruit_DHT.read_retry(dht11_sensor, data_pin)
         if (debug):
             print("temp:",temperature,"humd:",humidity)
-            f.write("Sensor: temp:",temperature,"humd:",humidity)
+            #f.write("Sensor: temp:",temperature,"humd:",humidity)
         try:
             # Get the current time 
             now = datetime.datetime.now()
@@ -38,7 +38,7 @@ while True:
                 "time": now
             })
             # Make a request to the endpoint.
-            f.write("Connecting: ",api_endpoint)
+            #f.write("Connecting: ",api_endpoint)
             res = requests.get(api_endpoint, params=params);  
         except:
             if (debug):
@@ -47,8 +47,8 @@ while True:
     except:
         if (debug):
             print("There was an error when getting the data")
-            f.write("There was an error when getting the data")
+            #f.write("There was an error when getting the data")
     time.sleep(1);
 
-f.close()
+#f.close()
     
